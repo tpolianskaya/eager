@@ -1,0 +1,417 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>eager</title>
+<meta name="description" content="Спрос на IT- и продуктовые профессии в Москве и Петербурге — по вакансиям hh.ru">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='24' fill='%23F4A9C3'/%3E%3Ccircle cx='50' cy='50' r='22' fill='%23C7F24B'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;600;700;800&family=Manrope:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#FDF3F6;
+    --surface:#FFFFFF;
+    --surface-2:#FBE4EC;
+    --surface-3:#F7D3E0;
+    --ink:#2B1E24;
+    --ink-muted:#8C7480;
+    --ink-faint:#BDA0AC;
+    --pink:#E893AC;
+    --pink-deep:#C65D82;
+    --pink-line:#F2D9E1;
+    --lime:#AEDE2E;
+    --lime-ink:#28380A;
+    --lime-soft:#EAF7C9;
+    --shadow: 0 1px 2px rgba(198,93,130,.06), 0 12px 28px -16px rgba(198,93,130,.28);
+    --font-display:'Unbounded', 'Segoe UI', sans-serif;
+    --font-body:'Manrope', -apple-system, 'Segoe UI', sans-serif;
+    --font-mono:'IBM Plex Mono', 'SF Mono', Menlo, monospace;
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --bg:#1C1420;
+      --surface:#241A29;
+      --surface-2:#2E2030;
+      --surface-3:#3A2A3F;
+      --ink:#F5E9EE;
+      --ink-muted:#B79AA6;
+      --ink-faint:#7E6871;
+      --pink:#EFA3BE;
+      --pink-deep:#F5C1D6;
+      --pink-line:#3A2A3F;
+      --lime:#C9F26B;
+      --lime-ink:#1C2606;
+      --lime-soft:#33421A;
+      --shadow: 0 1px 2px rgba(0,0,0,.3), 0 12px 28px -16px rgba(0,0,0,.55);
+    }
+  }
+  :root[data-theme="dark"]{
+    --bg:#1C1420;
+    --surface:#241A29;
+    --surface-2:#2E2030;
+    --surface-3:#3A2A3F;
+    --ink:#F5E9EE;
+    --ink-muted:#B79AA6;
+    --ink-faint:#7E6871;
+    --pink:#EFA3BE;
+    --pink-deep:#F5C1D6;
+    --pink-line:#3A2A3F;
+    --lime:#C9F26B;
+    --lime-ink:#1C2606;
+    --lime-soft:#33421A;
+    --shadow: 0 1px 2px rgba(0,0,0,.3), 0 12px 28px -16px rgba(0,0,0,.55);
+  }
+
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--ink);
+    font-family:var(--font-body);
+    font-size:16px;
+    line-height:1.5;
+    -webkit-font-smoothing:antialiased;
+  }
+  ::selection{ background:var(--lime); color:var(--lime-ink); }
+
+  a{ color:var(--pink-deep); }
+
+  .wrap{ max-width:1080px; margin:0 auto; padding:0 28px; }
+  @media (max-width:600px){ .wrap{ padding:0 18px; } }
+
+  header.hero{ padding:64px 0 40px; }
+  .brand{
+    display:inline-flex; align-items:center; gap:10px;
+    font-family:var(--font-display);
+    font-weight:700;
+    font-size:15px;
+    letter-spacing:.02em;
+    color:var(--ink);
+    margin-bottom:34px;
+  }
+  .brand .dot{ width:10px; height:10px; border-radius:50%; background:var(--lime); }
+
+  h1{
+    font-family:var(--font-display);
+    font-weight:800;
+    font-size:clamp(40px,7vw,68px);
+    line-height:0.98;
+    letter-spacing:-.02em;
+    margin:0 0 18px;
+    text-wrap:balance;
+    color:var(--ink);
+  }
+  h1 em{
+    font-style:normal;
+    background:var(--lime);
+    color:var(--lime-ink);
+    padding:0 .12em;
+    border-radius:.14em;
+  }
+  .dek{
+    color:var(--ink-muted);
+    font-size:17px;
+    max-width:56ch;
+    margin:0 0 30px;
+  }
+  .dek b{ color:var(--ink); font-weight:700; }
+
+  .stats{ display:flex; gap:14px; flex-wrap:wrap; margin-bottom:8px; }
+  .stat{
+    background:var(--surface);
+    border:1px solid var(--pink-line);
+    border-radius:14px;
+    padding:14px 18px;
+    box-shadow:var(--shadow);
+    min-width:120px;
+  }
+  .stat b{
+    display:block;
+    font-family:var(--font-mono);
+    font-size:22px;
+    font-variant-numeric:tabular-nums;
+    color:var(--pink-deep);
+  }
+  .stat span{ font-size:12.5px; color:var(--ink-faint); }
+
+  .toolbar{
+    display:flex; gap:12px; align-items:center; flex-wrap:wrap;
+    margin:36px 0 18px;
+  }
+  .searchwrap{ position:relative; flex:1; min-width:240px; max-width:420px; }
+  .searchwrap svg{ position:absolute; left:14px; top:50%; transform:translateY(-50%); color:var(--ink-faint); }
+  #q{
+    width:100%;
+    font-family:var(--font-body);
+    font-weight:500;
+    font-size:15px;
+    padding:12px 14px 12px 40px;
+    border-radius:12px;
+    border:1.5px solid var(--pink-line);
+    background:var(--surface);
+    color:var(--ink);
+    outline:none;
+  }
+  #q::placeholder{ color:var(--ink-faint); }
+  #q:focus{ border-color:var(--pink); }
+  #hint{ font-size:12.5px; color:var(--ink-faint); font-family:var(--font-mono); }
+
+  .legend{
+    display:flex; align-items:center; gap:8px;
+    font-size:12.5px; color:var(--ink-faint);
+    margin-bottom:22px;
+  }
+  .legend .swatch{ width:22px; height:6px; border-radius:3px; background:var(--lime); display:inline-block; }
+
+  table{ width:100%; border-collapse:collapse; }
+  .board{
+    background:var(--surface);
+    border:1px solid var(--pink-line);
+    border-radius:18px;
+    overflow:hidden;
+    box-shadow:var(--shadow);
+    margin-bottom:20px;
+  }
+  thead th{
+    text-align:left;
+    font-size:11px;
+    letter-spacing:.08em;
+    text-transform:uppercase;
+    color:var(--ink-faint);
+    font-weight:700;
+    padding:16px 18px;
+    border-bottom:1px solid var(--pink-line);
+    background:var(--surface-2);
+  }
+  tbody tr{ border-bottom:1px solid var(--pink-line); }
+  tbody tr:last-child{ border-bottom:none; }
+  tbody tr:hover{ background:var(--surface-2); }
+  td{ padding:16px 18px; vertical-align:top; }
+
+  .rank{
+    font-family:var(--font-mono);
+    font-size:13px;
+    color:var(--ink-faint);
+    width:34px;
+  }
+  tr[data-top="1"] .rank, tr[data-top="2"] .rank, tr[data-top="3"] .rank{
+    color:var(--lime-ink);
+    background:var(--lime);
+    border-radius:8px;
+    padding:3px 0;
+    text-align:center;
+    font-weight:700;
+  }
+
+  .role-name{
+    font-weight:700;
+    font-size:15px;
+    color:var(--ink);
+    margin-bottom:4px;
+  }
+  .role-desc{
+    font-size:13px;
+    color:var(--ink-muted);
+    max-width:34ch;
+    line-height:1.45;
+  }
+
+  .demand-cell{ min-width:150px; }
+  .meter{
+    height:7px;
+    border-radius:4px;
+    background:var(--surface-3);
+    overflow:hidden;
+    margin-bottom:6px;
+  }
+  .meter i{
+    display:block; height:100%;
+    background:var(--lime);
+    border-radius:4px;
+  }
+  .demand-n{
+    font-family:var(--font-mono);
+    font-size:13.5px;
+    font-variant-numeric:tabular-nums;
+    color:var(--ink);
+  }
+
+  .salary{
+    font-family:var(--font-mono);
+    font-size:13px;
+    font-variant-numeric:tabular-nums;
+    color:var(--ink-muted);
+    white-space:nowrap;
+  }
+
+  .vidlink{
+    display:inline-flex; align-items:center; gap:6px;
+    font-size:13px; font-weight:600;
+    color:var(--pink-deep);
+    text-decoration:none;
+    padding:7px 12px;
+    border-radius:20px;
+    background:var(--surface-2);
+    white-space:nowrap;
+    transition:background .15s ease;
+  }
+  .vidlink:hover{ background:var(--lime); color:var(--lime-ink); }
+  .vidlink svg{ flex-shrink:0; }
+
+  [hidden]{ display:none !important; }
+  .no-match{ display:none; padding:40px 0; color:var(--ink-faint); text-align:center; font-size:14px; }
+  body.filtering .no-match.show{ display:block; }
+
+  .note{
+    background:var(--surface-2);
+    border:1px solid var(--pink-line);
+    border-radius:14px;
+    padding:18px 20px;
+    font-size:13.5px;
+    color:var(--ink-muted);
+    line-height:1.6;
+    margin:28px 0 60px;
+  }
+  .note b{ color:var(--ink); }
+
+  footer{
+    padding:0 0 60px;
+    font-size:12.5px;
+    color:var(--ink-faint);
+  }
+
+  /* mobile: collapse table to cards */
+  @media (max-width:760px){
+    thead{ display:none; }
+    .board{ border-radius:16px; }
+    tbody tr{ display:flex; flex-wrap:wrap; padding:16px 16px; gap:6px 14px; }
+    td{ padding:0; border:none; }
+    .rank{ order:1; width:auto; }
+    .role-name-cell{ order:2; flex:1 1 auto; }
+    .demand-cell{ order:3; flex:1 1 140px; min-width:0; }
+    .salary-cell{ order:4; }
+    .video-cell{ order:5; margin-left:auto; }
+  }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <header class="hero">
+    <div class="brand"><span class="dot"></span>eager</div>
+    <h1>Кто сейчас <em>нужен</em><br>рынку IT</h1>
+    <p class="dek">28 профессий в разработке, данных и продукте — ранжированы по числу открытых вакансий на hh.ru. Фильтр: <b>Москва + Санкт-Петербург</b>, включая позиции с удалённым форматом.</p>
+
+    <div class="stats">
+      <div class="stat"><b>28</b><span>профессий</span></div>
+      <div class="stat"><b>hh.ru</b><span>источник</span></div>
+      <div class="stat"><b>сент. 2026</b><span>снимок данных</span></div>
+    </div>
+  </header>
+
+  <div class="toolbar">
+    <div class="searchwrap">
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="7" cy="7" r="5.2" stroke="currentColor" stroke-width="1.4"/><path d="M11 11L14.2 14.2" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
+      <input id="q" type="text" placeholder="Найти профессию — например, «Python» или «дизайнер»" autocomplete="off">
+    </div>
+    <span id="hint"></span>
+  </div>
+
+  <div class="legend"><span class="swatch"></span> длина полоски = число вакансий (логарифмическая шкала)</div>
+
+  <div class="board">
+    <table>
+      <thead>
+        <tr>
+          <th></th>
+          <th>Профессия</th>
+          <th>Спрос (Мск+СПб+удалёнка)</th>
+          <th>Вилка мидла, ₽/мес</th>
+          <th>Видео</th>
+        </tr>
+      </thead>
+      <tbody id="rows"></tbody>
+    </table>
+  </div>
+
+  <p class="no-match" id="noMatch">Ничего не найдено — попробуйте другой запрос.</p>
+
+  <div class="note">
+    <b>Как считали:</b> число вакансий — реальный результат поиска на hh.ru по названию/ключевому слову профессии, регион «Москва + Санкт-Петербург» (без ручной чистки дублей и неточных совпадений — некоторые широкие запросы вроде «аналитик данных» могут включать смежные вакансии). Вилки для мидла — ориентир по рынку, а не точный медианный расчёт. Видео подобраны как наиболее релевантные по выдаче YouTube, без сверки точных просмотров для каждого варианта.
+  </div>
+
+  <footer>eager · собрано в Claude · сентябрь 2026</footer>
+</div>
+
+<script>
+  var DATA = [
+    {n:"Бизнес-аналитик", d:"Собирает и формализует требования бизнеса, описывает процессы, ставит задачи разработке", c:8946, s:"150 000–260 000", v:"https://www.youtube.com/watch?v=mPzYPepSx-A"},
+    {n:"Аналитик данных", d:"Строит отчёты и дашборды, ищет закономерности в данных для принятия решений", c:6874, s:"150 000–250 000", v:"https://www.youtube.com/watch?v=DFLc8a2EJtg"},
+    {n:"Системный аналитик", d:"Проектирует логику систем и интеграций, пишет технические требования для разработчиков", c:4537, s:"180 000–300 000", v:"https://www.youtube.com/watch?v=DeAqAHjgTys"},
+    {n:"Python-разработчик", d:"Пишет backend, сервисы автоматизации, ML-пайплайны", c:4293, s:"180 000–320 000", v:"https://www.youtube.com/watch?v=6z4VsHjiqJI"},
+    {n:"Специалист по ИБ", d:"Защищает системы и данные компании от атак и утечек", c:3744, s:"150 000–280 000", v:"https://www.youtube.com/watch?v=9PiY9dwqVw4"},
+    {n:"1С-программист", d:"Настраивает и дорабатывает конфигурации 1С под задачи бизнеса", c:2540, s:"150 000–280 000", v:"https://www.youtube.com/watch?v=zE-ggdRFZUk"},
+    {n:"Продакт-менеджер", d:"Отвечает за продуктовую стратегию, метрики и приоритизацию фич", c:1496, s:"200 000–350 000", v:"https://www.youtube.com/watch?v=JyLGZlfQ61I"},
+    {n:"QA-инженер / тестировщик", d:"Проверяет продукт на баги, пишет автотесты", c:1451, s:"130 000–220 000", v:"https://www.youtube.com/watch?v=6y5FTMLGxEg"},
+    {n:"DevOps-инженер", d:"Строит и поддерживает инфраструктуру, CI/CD, деплой", c:1360, s:"220 000–380 000", v:"https://www.youtube.com/watch?v=iNgn4VhSEjg"},
+    {n:"IT-проектный менеджер", d:"Ведёт проект по срокам и бюджету, координирует команду", c:1145, s:"180 000–300 000", v:"https://www.youtube.com/watch?v=Q3T0yekECng"},
+    {n:"Java-разработчик", d:"Backend enterprise-систем, банков, крупных сервисов", c:1111, s:"200 000–350 000", v:"https://www.youtube.com/watch?v=DYcPThb7DKY"},
+    {n:"JavaScript-разработчик", d:"Frontend/full-stack на JS-стеке", c:1072, s:"150 000–280 000", v:"https://www.youtube.com/watch?v=JfWX8u4GKG8"},
+    {n:"C++-разработчик", d:"Системное и высокопроизводительное ПО, игровые движки", c:961, s:"180 000–320 000", v:"https://www.youtube.com/watch?v=0tov3Ycld7Q"},
+    {n:"Backend-разработчик", d:"Серверная логика и API продукта (язык не привязан)", c:810, s:"180 000–320 000", v:"https://www.youtube.com/watch?v=XTqGQ-PqdyY"},
+    {n:"C#/.NET-разработчик", d:"Backend и десктоп на .NET, игры на Unity", c:505, s:"170 000–300 000", v:"https://www.youtube.com/watch?v=jipybKSCvJk"},
+    {n:"TypeScript-разработчик", d:"Frontend с типизацией, чаще в связке с React/Angular", c:496, s:"150 000–280 000", v:"https://www.youtube.com/watch?v=JfWX8u4GKG8"},
+    {n:"Data Engineer", d:"Строит пайплайны и инфраструктуру данных (ETL, DWH)", c:481, s:"200 000–350 000", v:"https://www.youtube.com/watch?v=VMdjCyhnJyA"},
+    {n:"Frontend-разработчик", d:"Интерфейс и клиентская логика веб-продукта", c:440, s:"150 000–280 000", v:"https://www.youtube.com/watch?v=JfWX8u4GKG8"},
+    {n:"PHP-разработчик", d:"Backend веб-сайтов, часто на Laravel/Symfony или под CMS", c:391, s:"140 000–250 000", v:"https://www.youtube.com/watch?v=8F2IAIrP3N4"},
+    {n:"Go-разработчик", d:"Backend высоконагруженных сервисов и микросервисов", c:315, s:"220 000–380 000", v:"https://www.youtube.com/watch?v=O3jdnmf_RSQ"},
+    {n:"UX/UI-дизайнер", d:"Проектирует интерфейсы и пользовательский опыт продукта", c:301, s:"130 000–220 000", v:"https://www.youtube.com/watch?v=eXi1UkAqNIU"},
+    {n:"Администратор БД (DBA)", d:"Поддерживает работоспособность и производительность баз данных", c:285, s:"150 000–260 000", v:"https://www.youtube.com/watch?v=URIo_G_fRKQ"},
+    {n:"Kotlin/Android-разработчик", d:"Мобильные приложения под Android", c:258, s:"170 000–300 000", v:"https://www.youtube.com/watch?v=COKWA6hj-W8"},
+    {n:"Data Scientist", d:"Строит ML-модели, исследует данные для прогнозов", c:221, s:"200 000–350 000", v:"https://www.youtube.com/watch?v=ucfvJMkG0JM"},
+    {n:"Руководитель ИТ-проектов", d:"Отвечает за портфель ИТ-проектов, уровень выше рядового PM", c:205, s:"250 000–400 000", v:"https://www.youtube.com/watch?v=G3QaddAjLTY"},
+    {n:"iOS-разработчик", d:"Мобильные приложения под iOS", c:187, s:"180 000–320 000", v:"https://www.youtube.com/watch?v=L0JfAOIZAXk"},
+    {n:"ML-инженер", d:"Встраивает и эксплуатирует ML-модели в продукте", c:108, s:"220 000–400 000", v:"https://www.youtube.com/watch?v=EjUdNGhwxY4"},
+    {n:"Android-разработчик", d:"То же, что Kotlin-разработчик — отдельная формулировка вакансии", c:52, s:"170 000–300 000", v:"https://www.youtube.com/watch?v=COKWA6hj-W8"}
+  ];
+
+  var maxLog = Math.log(DATA[0].c + 1);
+
+  var rowsEl = document.getElementById('rows');
+  DATA.forEach(function(item, i){
+    var pct = Math.max(6, Math.round((Math.log(item.c + 1) / maxLog) * 100));
+    var tr = document.createElement('tr');
+    tr.setAttribute('data-top', i + 1);
+    tr.innerHTML =
+      '<td class="rank">' + (i + 1) + '</td>' +
+      '<td class="role-name-cell"><div class="role-name">' + item.n + '</div><div class="role-desc">' + item.d + '</div></td>' +
+      '<td class="demand-cell"><div class="meter"><i style="width:' + pct + '%"></i></div><div class="demand-n">' + item.c.toLocaleString('ru-RU') + '</div></td>' +
+      '<td class="salary-cell"><span class="salary">' + item.s + '</span></td>' +
+      '<td class="video-cell"><a class="vidlink" href="' + item.v + '" target="_blank" rel="noopener">' +
+        '<svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg> видео</a></td>';
+    rowsEl.appendChild(tr);
+  });
+
+  var input = document.getElementById('q');
+  var hint = document.getElementById('hint');
+  var noMatch = document.getElementById('noMatch');
+  var allRows = Array.prototype.slice.call(rowsEl.children);
+
+  input.addEventListener('input', function(){
+    var term = input.value.toLowerCase().trim();
+    document.body.classList.toggle('filtering', term.length > 0);
+    var visible = 0;
+    allRows.forEach(function(row){
+      var match = term === '' || row.textContent.toLowerCase().indexOf(term) !== -1;
+      row.hidden = !match;
+      if(match) visible++;
+    });
+    hint.textContent = term === '' ? '' : (visible + (visible === 1 ? ' совпадение' : ' совпадений'));
+    noMatch.classList.toggle('show', term !== '' && visible === 0);
+  });
+</script>
+
+</body>
+</html>
