@@ -11,43 +11,8 @@
 <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;600;700;800&family=Manrope:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
 <style>
   :root{
-    --bg:#FDF3F6;
-    --surface:#FFFFFF;
-    --surface-2:#FBE4EC;
-    --surface-3:#F7D3E0;
-    --ink:#2B1E24;
-    --ink-muted:#8C7480;
-    --ink-faint:#BDA0AC;
-    --pink:#E893AC;
-    --pink-deep:#C65D82;
-    --pink-line:#F2D9E1;
-    --lime:#AEDE2E;
-    --lime-ink:#28380A;
-    --lime-soft:#EAF7C9;
-    --shadow: 0 1px 2px rgba(198,93,130,.06), 0 12px 28px -16px rgba(198,93,130,.28);
-    --font-display:'Unbounded', 'Segoe UI', sans-serif;
-    --font-body:'Manrope', -apple-system, 'Segoe UI', sans-serif;
-    --font-mono:'IBM Plex Mono', 'SF Mono', Menlo, monospace;
-  }
-  @media (prefers-color-scheme: dark){
-    :root:not([data-theme="light"]){
-      --bg:#1C1420;
-      --surface:#241A29;
-      --surface-2:#2E2030;
-      --surface-3:#3A2A3F;
-      --ink:#F5E9EE;
-      --ink-muted:#B79AA6;
-      --ink-faint:#7E6871;
-      --pink:#EFA3BE;
-      --pink-deep:#F5C1D6;
-      --pink-line:#3A2A3F;
-      --lime:#C9F26B;
-      --lime-ink:#1C2606;
-      --lime-soft:#33421A;
-      --shadow: 0 1px 2px rgba(0,0,0,.3), 0 12px 28px -16px rgba(0,0,0,.55);
-    }
-  }
-  :root[data-theme="dark"]{
+    /* eager is a fixed dark-plum + lime identity — same on every device, not tied to system light/dark */
+    color-scheme: dark;
     --bg:#1C1420;
     --surface:#241A29;
     --surface-2:#2E2030;
@@ -62,6 +27,9 @@
     --lime-ink:#1C2606;
     --lime-soft:#33421A;
     --shadow: 0 1px 2px rgba(0,0,0,.3), 0 12px 28px -16px rgba(0,0,0,.55);
+    --font-display:'Unbounded', 'Segoe UI', sans-serif;
+    --font-body:'Manrope', -apple-system, 'Segoe UI', sans-serif;
+    --font-mono:'IBM Plex Mono', 'SF Mono', Menlo, monospace;
   }
 
   *{box-sizing:border-box;}
