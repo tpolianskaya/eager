@@ -29,40 +29,7 @@
     --font-body:'Manrope', -apple-system, 'Segoe UI', sans-serif;
     --font-mono:'IBM Plex Mono', 'SF Mono', Menlo, monospace;
   }
-  @media (prefers-color-scheme: dark){
-    :root:not([data-theme="light"]){
-      --bg:#1C1420;
-      --surface:#241A29;
-      --surface-2:#2E2030;
-      --surface-3:#3A2A3F;
-      --ink:#F5E9EE;
-      --ink-muted:#B79AA6;
-      --ink-faint:#7E6871;
-      --pink:#EFA3BE;
-      --pink-deep:#F5C1D6;
-      --pink-line:#3A2A3F;
-      --lime:#C9F26B;
-      --lime-ink:#1C2606;
-      --lime-soft:#33421A;
-      --shadow: 0 1px 2px rgba(0,0,0,.3), 0 12px 28px -16px rgba(0,0,0,.55);
-    }
-  }
-  :root[data-theme="dark"]{
-    --bg:#1C1420;
-    --surface:#241A29;
-    --surface-2:#2E2030;
-    --surface-3:#3A2A3F;
-    --ink:#F5E9EE;
-    --ink-muted:#B79AA6;
-    --ink-faint:#7E6871;
-    --pink:#EFA3BE;
-    --pink-deep:#F5C1D6;
-    --pink-line:#3A2A3F;
-    --lime:#C9F26B;
-    --lime-ink:#1C2606;
-    --lime-soft:#33421A;
-    --shadow: 0 1px 2px rgba(0,0,0,.3), 0 12px 28px -16px rgba(0,0,0,.55);
-  }
+  /* eager is a fixed light-pink identity — no dark variant, by design */
 
   *{box-sizing:border-box;}
   body{
@@ -302,11 +269,11 @@
   <header class="hero">
     <div class="brand"><span class="dot"></span>eager</div>
     <h1>Кто сейчас <em>нужен</em><br>рынку IT</h1>
-    <p class="dek">28 профессий в разработке, данных и продукте — ранжированы по числу открытых вакансий на hh.ru. Фильтр: <b>Москва + Санкт-Петербург</b>, включая позиции с удалённым форматом.</p>
+    <p class="dek">28 профессий в разработке, данных и продукте — ранжированы по числу открытых вакансий. Фильтр: <b>Москва + Санкт-Петербург</b>, включая позиции с удалённым форматом.</p>
 
     <div class="stats">
       <div class="stat"><b>28</b><span>профессий</span></div>
-      <div class="stat"><b>hh.ru</b><span>источник</span></div>
+      <div class="stat"><b>Мск + СПб</b><span>+ удалёнка</span></div>
       <div class="stat"><b>сент. 2026</b><span>снимок данных</span></div>
     </div>
   </header>
@@ -339,7 +306,7 @@
   <p class="no-match" id="noMatch">Ничего не найдено — попробуйте другой запрос.</p>
 
   <div class="note">
-    <b>Как считали:</b> число вакансий — реальный результат поиска на hh.ru по названию/ключевому слову профессии, регион «Москва + Санкт-Петербург» (без ручной чистки дублей и неточных совпадений — некоторые широкие запросы вроде «аналитик данных» могут включать смежные вакансии). Вилки для мидла — ориентир по рынку, а не точный медианный расчёт. Видео подобраны как наиболее релевантные по выдаче YouTube, без сверки точных просмотров для каждого варианта.
+    <b>Как считали:</b> число вакансий — результат поиска по названию/ключевому слову профессии, регион «Москва + Санкт-Петербург» (без ручной чистки дублей и неточных совпадений — некоторые широкие запросы вроде «аналитик данных» могут включать смежные вакансии). Вилки для мидла — ориентир по рынку, а не точный медианный расчёт. Видео подобраны как наиболее релевантные по выдаче YouTube, без сверки точных просмотров для каждого варианта.
   </div>
 
   <footer>eager · собрано в Claude · сентябрь 2026</footer>
